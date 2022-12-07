@@ -1,13 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './Components/App/App';
+import ErrorPage from './Components/ErrorPage/Error';
+import PageNotFound from './Components/ErrorPage/PageNotFound';
+import Login from './Components/Login';
+import MakePlaylist from './Components/MakePlaylist';
+import AddSongs from './Components/AddSongs';
+import Playlist from './Components/Playlist';
+import About from './Components/About';
+import Homepage from './Components/Homepage';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        index: true,
+        element: <Homepage/>
+      },
+      {
+        path: "login",
+        element: <Login/>,
+      },
+      {
+        path: "make-playlist",
+        element: <MakePlaylist/>,
+      },
+      {
+        path: "add-songs",
+        element: <AddSongs/>
+      },
+      {
+        path: "playlist",
+        element: <Playlist/>
+      },
+      {
+        path: "about",
+        element: <About/>
+      },
+      {
+        path: "*",
+        element: <PageNotFound/>
+      }
+    ]
+  }
+])
+
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
