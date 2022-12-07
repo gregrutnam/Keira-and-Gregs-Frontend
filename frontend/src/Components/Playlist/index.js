@@ -1,3 +1,8 @@
 export default function Playlist(){
-    return <h1>Final playlist</h1>
+    return <div><h1>Final playlist</h1>
+    <h2>Playlist Name</h2>
+    <ul></ul>
+    <button>Play on Spotify</button>
+
+    </div>
 }
