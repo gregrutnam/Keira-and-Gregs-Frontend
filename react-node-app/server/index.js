@@ -6,7 +6,6 @@ const PORT = process.env.PORT || 3001;
 
 dotenv.config()
 
-
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
@@ -48,7 +47,6 @@ app.get("/login", (req, res) => {
 
   res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });
-
 
 //CODE TO GET USER'S TOP TRACKS / ARTISTS
 app.get("/callback", (req, res) => {
