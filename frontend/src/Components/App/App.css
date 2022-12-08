@@ -18,8 +18,8 @@
   justify-content: center;
 }
 
-.login-section > button {
-  height: 80px;
+.login-section > form > input {
+  height: 100px;
   width: 200px;
   font-size: 20px;
 }

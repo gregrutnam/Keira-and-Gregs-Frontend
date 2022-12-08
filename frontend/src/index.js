@@ -9,6 +9,7 @@ import MakePlaylist from './Components/MakePlaylist';
 import AddSongs from './Components/AddSongs';
 import Playlist from './Components/Playlist';
 import About from './Components/About';
+import LoggedIn from './Components/LoggedIn';
 import Homepage from './Components/Homepage';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login/>,
+      },
+      {
+        path: "callback",
+        element: <LoggedIn/>
       },
       {
         path: "make-playlist",
