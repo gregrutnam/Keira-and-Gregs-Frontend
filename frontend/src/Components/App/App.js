@@ -1,9 +1,20 @@
 import './App.css';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 function App() {
+  const [data, setData] = useState(null);
 
+  useEffect(() => {
+    fetch("/callback")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+  }, []);
+console.log(data)
+  useEffect(() => {
+    console.log(data)
+  
+  },[data])
   return (
     <div className="App">
       <nav>
