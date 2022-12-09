@@ -11,10 +11,6 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const app = express();
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
-
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
@@ -70,16 +66,17 @@ app.get("/callback", (req, res) => {
     .then((response) => {
       if (response.status === 200) {
         const { access_token, token_type } = response.data;
-        const type = "tracks?time_range=long_term&limit=50&offset=0";
+        // const type = "tracks?time_range=long_term&limit=50&offset=0";
 
         axios
-          .get(`https://api.spotify.com/v1/me/top/${type}`, {
+          .get(`https://api.spotify.com/v1/me`, {
             headers: {
               Authorization: `${token_type} ${access_token}`,
             },
           })
           .then((response) => {
-            res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
+            res.send(`<h3>Logged in as ${response.data.display_name}</h3>
+            <a href="http://localhost:3000/logged-in">Continue</a>`);
           })
           .catch((error) => {
             res.send(error);
@@ -91,4 +88,8 @@ app.get("/callback", (req, res) => {
     .catch((error) => {
       res.send(error);
     });
+});
+
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server!" });
 });

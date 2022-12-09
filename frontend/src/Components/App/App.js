@@ -6,14 +6,14 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/callback")
+    fetch("/api")
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
-console.log(data)
+
+  console.log(data)
   useEffect(() => {
     console.log(data)
-  
   },[data])
   return (
     <div className="App">
